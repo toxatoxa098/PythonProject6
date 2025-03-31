@@ -39,3 +39,7 @@ def test_category_init(category1, category2):
 
     assert category1.product_count == 1
     assert category2.product_count == 1
+    assert category2.products[0].name == '55" QLED 4K'
+    assert category2.products[0].description == "Фоновая подсветка"
+    assert category2.products[0].price == 123000.0
+    assert category2.products[0].quantity == 7
