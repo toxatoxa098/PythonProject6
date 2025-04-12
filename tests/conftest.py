@@ -45,3 +45,13 @@ def category2():
         description="Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
         products=[Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)],
     )
+
+
+@pytest.fixture
+def sample_product():
+    return Product("Test Product", "Test Description", 1000, 10)
+
+
+@pytest.fixture
+def sample_category(sample_product):
+    return Category("Test Category", "Test Description", [sample_product])
