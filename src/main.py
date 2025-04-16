@@ -11,6 +11,7 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    # использованием декоратора @property.
     @property
     def price(self):
         return self.__price
