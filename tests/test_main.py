@@ -1,5 +1,6 @@
 from src.main import Product, Category
 
+
 def test_product_init(product, product1, product2, product3):
     assert product.name == "Samsung Galaxy S23 Ultra"
     assert product.description == "256GB, Серый цвет, 200MP камера"
@@ -34,14 +35,11 @@ def test_category_init(category1, category2):
         == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
     )
 
-
     assert category1.category_count == 2
     assert category2.category_count == 2
 
     assert category1.product_count == 1
     assert category2.product_count == 1
-
-
 
 
 def test_product_creation(sample_product):
@@ -57,13 +55,13 @@ def test_product_price_setter_increase(sample_product):
 
 
 def test_product_price_setter_decrease(sample_product, monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'y')
+    monkeypatch.setattr("builtins.input", lambda _: "y")
     sample_product.price = 800
     assert sample_product.price == 800
 
 
 def test_product_price_setter_decrease_cancel(sample_product, monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: 'n')
+    monkeypatch.setattr("builtins.input", lambda _: "n")
     sample_product.price = 800
     assert sample_product.price == 1000  # Цена не должна измениться
 
@@ -105,12 +103,7 @@ def test_category_multiple_products():
 
 
 def test_new_product_creation():
-    product_dict = {
-        "name": "New Product",
-        "description": "New Description",
-        "price": 1500,
-        "quantity": 7
-    }
+    product_dict = {"name": "New Product", "description": "New Description", "price": 1500, "quantity": 7}
     new_product = Product.new_product(product_dict)
     assert new_product.name == "New Product"
     assert new_product.description == "New Description"
@@ -120,12 +113,7 @@ def test_new_product_creation():
 
 def test_new_product_duplicate():
     Product.products = []  # Очищаем список продуктов перед тестом
-    product_dict = {
-        "name": "Duplicate Product",
-        "description": "Description",
-        "price": 1000,
-        "quantity": 5
-    }
+    product_dict = {"name": "Duplicate Product", "description": "Description", "price": 1000, "quantity": 5}
     Product.new_product(product_dict)
     duplicate = Product.new_product(product_dict)
     assert len(Product.products) == 0
